@@ -1,0 +1,83 @@
+body{
+	background-image: url(../IMG/stemwijzerBG.jpg);
+	background-repeat: no-repeat;
+	background-position: absolute;
+	background-size: cover;
+	font-family: arial;
+	background-attachment: fixed;
+}
+#background{
+	width: auto;
+	padding-top: 20px;
+}
+#innerBackground{
+	background-color: white;
+	margin: auto;
+	width: 1170px;
+	height: 430px;
+}
+#intro-text{
+	margin-left: 110px;
+	padding-top: 67px;
+}
+h1{
+	color: #01b4dc;
+	font-size: 22px;
+}
+#subject{
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 3px;
+}
+#comment{
+	margin-top: 25px;
+}
+#btn-start{
+	border: transparent;
+	background-color: black;
+	color: white;
+	float: right;
+	border-radius: 6px;
+	width: 185px;
+	height: 68px;
+	margin-right: 120px;
+	font-size: 25px;
+	font-weight: bold;
+}
+#btn-start:hover{
+	background-color: #01b4dc;
+	transition-duration: 0.2s;
+}
+.icon-xsable{
+    margin-right: 20px;
+    margin-top: -20px;
+    width: 75px;
+    height:75px;
+}
+#beperking{
+    margin-top: 50px;
+    font-size: 15px;
+    display:flex;
+    max-width: 370px;
+}
+.icon-lock{
+	margin-left: -10px;
+    margin-right: 20px;
+    margin-top: -30px;
+    width: 120px;
+    height:120px;
+}
+#privacy{
+    font-size: 15px;
+    display:flex;
+    max-width: 370px;
+}
+#link1{
+	text-decoration: none;
+}
+#link2{
+	text-decoration: none;
+}
+a{
+	color: inherit;
+}
