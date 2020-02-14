@@ -67,17 +67,64 @@ h1{
     width: 120px;
     height:120px;
 }
-#privacy{
-    font-size: 15px;
+.link{
+	text-decoration: none;
+	font-size: 15px;
     display:flex;
     max-width: 370px;
 }
-#link1{
-	text-decoration: none;
-}
-#link2{
-	text-decoration: none;
-}
 a{
 	color: inherit;
+}
+#intro_adv{
+	background-color: white;
+	margin: auto;
+	width: 1170px;
+	height: 220px;
+	margin-top: -7px
+}
+hr{
+	border-style: dotted;
+    color: gray;
+    border-width: 1px;
+}
+#stemmentracker{
+	width: 400px;
+}
+#adv_container{
+	margin-left: 110px;
+	padding-top: 20px;
+}
+#tracker_comment{
+	color: grey;
+}
+#intro_parties{
+	background-color: #01b4dc;
+	height: 600px;
+	width: auto;
+}
+.party{
+	margin: 5px;
+    display: inline-block;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50px;
+}
+.party:hover{
+	transform: scale(2);
+	transition-duration: 0.5s;
+}
+.eenvandaag{
+	width: 173px;
+	height: 36px;
+	margin-top: 40px;
+}
+.parties{
+	margin-left: 110px;
+	margin-right: 110px;
+}
+.parties_header{
+	color: white;
 }
