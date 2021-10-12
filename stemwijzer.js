@@ -12,11 +12,13 @@ const btnOneens = document.getElementById("button-oneens");
 const btnGeen = document.getElementById("button-geen");
 const btnSkip = document.getElementById("overslaan");
 const impQuestionsList = document.getElementById("importantVragen");
+const resultsPage = document.getElementById("results-page");
+const importantBox = document.getElementById("importantBox");
+var isImportant = [];
 
 for (var y = 0; y < parties.length; y++) {
 	parties[y].score = 0;
 }
-
 function startPage(){
 	vragenPage.style.display="none";
 	importantPage.style.display="none";
@@ -31,18 +33,22 @@ function startPage(){
 	}
 	btnEens.onclick = function(){
 		answers.push("pro");
+		checkImportant();
 		displayQuestion();
 	}
 	btnOneens.onclick = function(){
 		answers.push("contra");
+		checkImportant();
 		displayQuestion();
 	}
 	btnGeen.onclick = function(){
 		answers.push("null");
+		checkImportant();
 		displayQuestion();
 	}
 	btnSkip.onclick = function(){
 		answers.push("null");
+		checkImportant();
 		displayQuestion();
 	}	
 }
@@ -61,16 +67,18 @@ function checkMatch(){
 		for (var i = 0; i < subjects.length; i++) {
 			if (subjects[i].parties[x].position === answers[i]) {
 				parties[x].score++;
-			}
-			console.log(parties[x].score);
+				console.log(parties);
+				if (isImportant[i] === 1){
+					parties[x].score++
+				} 
+			}	
 		}
 	}
+	console.log(parties);
 	parties.sort(compare);
-	
 	//parties[x].score : 30 x 100 = procent match
 	//top 3 hoogste cijfers display met procenten erbij
 }
-
 function compare(a, b) {
 	var a = a.score;
 	var b = b.score;
@@ -89,18 +97,16 @@ function important(){
 	setImpQuestions();
 }
 function setImpQuestions(){
-	for (var a = 0; a < subjects.length; a++) {
-		var inputImpQuestions = document.createElement("input");
-		var liImpQuestions = document.createElement("li");
-		var impQuestion = document.createTextNode(subjects[a].title);
-		inputImpQuestions.setAttribute("type", "checkbox");
-		inputImpQuestions.setAttribute("onclick", parties[a].score++ );
-		liImpQuestions.appendChild(inputImpQuestions);
-		liImpQuestions.appendChild(impQuestion);
-		impQuestionsList.appendChild(liImpQuestions);
-		console.log(parties[a].score);
-			
+		startBtn.onclick = function(){
+			importantPage.style.display="none";
+			resultPage.style.display="inline";
+		}
+}
+function checkImportant(){
+	if (importantBox.checked){
+		isImportant[currentVraag-1] = 1;
+	}else{
+		isImportant[currentVraag-1] = 0;
 	}
 }
-
 startPage();
