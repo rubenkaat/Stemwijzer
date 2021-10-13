@@ -348,3 +348,23 @@ details summary::-webkit-details-marker {
 .innerdivvragen{
 	color: white;
 }
+#result-button{
+	border: transparent;
+	background-color: black;
+	color: white;
+	float: right;
+	border-radius: 6px;
+	width: 185px;
+	height: 68px;
+	margin-right: 120px;
+	font-size: 25px;
+	font-weight: bold;
+}
+#result-button:hover{
+	background-color: #01b4dc;
+	transition-duration: 0.2s;
+}
+.parties-results{
+	text-align: center;
+	margin-left: 400px;
+}
