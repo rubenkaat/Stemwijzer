@@ -19,6 +19,9 @@ const party2 = document.getElementById("party-2");
 const party3 = document.getElementById("party-3");
 const resultBtn = document.getElementById("result-button");
 const homeBtn = document.getElementById("home-button");
+const procent1 = document.getElementById("procent-1");
+const procent2 = document.getElementById("procent-2");
+const procent3 = document.getElementById("procent-3");
 
 for (var y = 0; y < parties.length; y++) {
 	parties[y].score = 0;
@@ -72,7 +75,6 @@ function displayQuestion(){
 	}
 }
 function checkMatch(){
-	console.log(parties);
 	for (var x = 0; x < parties.length; x++) {
 		for (var i = 0; i < subjects.length; i++) {
 			if (subjects[i].parties[x].position === answers[i]) {
@@ -83,10 +85,7 @@ function checkMatch(){
 			}	
 		}
 	}
-	console.log(parties);
 	parties.sort(compare);
-	//parties[x].score : 30 x 100 = procent match
-	//top 3 hoogste cijfers display met procenten erbij
 }
 function compare(a, b) {
 	var a = a.score;
@@ -103,6 +102,7 @@ function compare(a, b) {
 function important(){
 	vragenPage.style.display="none";
 	importantPage.style.display="inline";
+	
 	resultBtn.onclick = function(){
 			importantPage.style.display="none";
 			resultsPage.style.display="inline";
@@ -123,5 +123,13 @@ function showResults(){
 	homeBtn.onclick = function(){
 		window.location.reload();
 	}
+	function calculatePercentage(){
+		for (var z = 0; z < 3; z++) {
+			var procentLoop = [procent1, procent2, procent3];
+			var procentScore = (parties[z].score / subjects.length * 100);
+			procentLoop[z].innerHTML = (procentScore + "%");
+		}	
+	}
+	calculatePercentage();
 }
 startPage();

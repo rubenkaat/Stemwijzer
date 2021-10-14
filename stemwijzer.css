@@ -142,7 +142,7 @@ hr{
 .footer > a > img{
 	height: 26px;
 }
-#backbutton > button{
+#backbutton{
 	width: 50px;
 	height: 50px;
 	background-repeat: no-repeat;
@@ -156,7 +156,7 @@ hr{
 	margin-top: 3px;
 }
 
-#backbutton > button:hover{
+#backbutton:hover{
 	transform: translateX(-4px);
 	border: 0;
 	cursor: pointer;
@@ -356,6 +356,7 @@ details summary::-webkit-details-marker {
 	border-radius: 6px;
 	width: 185px;
 	height: 68px;
+	margin-top: 50px;
 	margin-right: 120px;
 	font-size: 25px;
 	font-weight: bold;
@@ -364,7 +365,22 @@ details summary::-webkit-details-marker {
 	background-color: #01b4dc;
 	transition-duration: 0.2s;
 }
-.parties-results{
+#parties-results{
 	text-align: center;
-	margin-left: 400px;
+}
+#home-button{
+	border: transparent;
+	background-color: black;
+	color: white;
+	border-radius: 6px;
+	width: 185px;
+	height: 68px;
+	margin-left: 5px;
+	margin-top: 5px;
+	font-size: 25px;
+	font-weight: bold;
+}
+#home-button:hover{
+	background-color: #01b4dc;
+	transition-duration: 0.2s;
 }
