@@ -1,6 +1,6 @@
 const mainPage = document.getElementById("main-page");
 const vragenPage = document.getElementById("vragen-page");
-const importantPage = document.getElementById("important-page");
+const filtersPage = document.getElementById("filters-page");
 const startBtn = document.getElementById("btn-start");
 const backBtn = document.getElementById("backbutton");
 const vraagTitle = document.getElementById("title");
@@ -22,13 +22,15 @@ const homeBtn = document.getElementById("home-button");
 const procent1 = document.getElementById("procent-1");
 const procent2 = document.getElementById("procent-2");
 const procent3 = document.getElementById("procent-3");
+const groteBtn = document.getElementById("grote-button");
+const secularBtn = document.getElementById("secular-button");
 
 for (var y = 0; y < parties.length; y++) {
 	parties[y].score = 0;
 }
 function startPage(){
 	vragenPage.style.display="none";
-	importantPage.style.display="none";
+	filtersPage.style.display="none";
 	resultsPage.style.display="none";
 	startBtn.onclick = function(){
 		mainPage.style.display="none";
@@ -67,7 +69,7 @@ function startPage(){
 function displayQuestion(){
 	if (currentVraag === subjects.length) {
 		checkMatch();
-		important();
+		filters();
 	}else{
 		vraagTitle.innerHTML = subjects[currentVraag].title;
 		vraagStatement.innerHTML = subjects[currentVraag].statement;
@@ -99,15 +101,35 @@ function compare(a, b) {
 	}
 	return comparison;
 }
-function important(){
+function filters(){
 	vragenPage.style.display="none";
-	importantPage.style.display="inline";
+	filtersPage.style.display="inline";
 	
 	resultBtn.onclick = function(){
-			importantPage.style.display="none";
+			filtersPage.style.display="none";
 			resultsPage.style.display="inline";
 			showResults();
 		}
+	groteBtn.onclick = function(){
+		for (var p = 0; p > parties.length; p++) {
+			if (parties[p].secular === true) {
+				parties.splice(p, 1);
+			}
+		}
+		filtersPage.style.display="none";
+		resultsPage.style.display="inline";
+		showResults();
+	}
+	secularBtn.onclick = function(){
+		for (var p = 0; p > parties.length; p++) {
+			if (parties[p].secular === false) {
+				parties.splice(p, 1);
+			}
+		}
+		filtersPage.style.display="none";
+		resultsPage.style.display="inline";
+		showResults();
+	}
 }
 function checkImportant(){
 	if (importantBox.checked){
@@ -132,4 +154,9 @@ function showResults(){
 	}
 	calculatePercentage();
 }
+function checkFilters(){
+	//checkbox groot = checked => for loop parties, check of seculier = false => houd in array?
+	//checkbox sec = checked => 
+}
+
 startPage();
