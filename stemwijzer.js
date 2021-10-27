@@ -56,7 +56,7 @@ function startPage(){
 		displayQuestion();
 	}
 	btnGeen.onclick = function(){
-		answers.push("null");
+		answers.push("none");
 		checkImportant();
 		displayQuestion();
 	}
@@ -111,7 +111,7 @@ function filters(){
 			showResults();
 		}
 	groteBtn.onclick = function(){
-		for (var p = 0; p > parties.length; p++) {
+		for (var p = 0; p < parties.length; p++) {
 			if (parties[p].secular === true) {
 				parties.splice(p, 1);
 			}
@@ -121,7 +121,7 @@ function filters(){
 		showResults();
 	}
 	secularBtn.onclick = function(){
-		for (var p = 0; p > parties.length; p++) {
+		for (var p = 0; p < parties.length; p++) {
 			if (parties[p].secular === false) {
 				parties.splice(p, 1);
 			}
@@ -153,10 +153,6 @@ function showResults(){
 		}	
 	}
 	calculatePercentage();
-}
-function checkFilters(){
-	//checkbox groot = checked => for loop parties, check of seculier = false => houd in array?
-	//checkbox sec = checked => 
 }
 
 startPage();
