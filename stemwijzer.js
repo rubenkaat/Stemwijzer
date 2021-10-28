@@ -7,9 +7,9 @@ const vraagTitle = document.getElementById("title");
 var currentVraag = 0;
 const vraagStatement = document.getElementById("statement");
 var answers = [];
-const btnEens = document.getElementById("button-eens");
-const btnOneens = document.getElementById("button-oneens");
-const btnGeen = document.getElementById("button-geen");
+const btnEens = document.getElementById("pro");
+const btnOneens = document.getElementById("contra");
+const btnGeen = document.getElementById("none");
 const btnSkip = document.getElementById("overslaan");
 const resultsPage = document.getElementById("results-page");
 const importantBox = document.getElementById("importantBox");
@@ -70,7 +70,21 @@ function displayQuestion(){
 	if (currentVraag === subjects.length) {
 		checkMatch();
 		filters();
-	}else{
+	 }else{
+	 	displayButtons();
+		if(answers[currentVraag] != null){
+			if (answers[currentVraag] === "pro") {
+				btnEens.style.backgroundColor = "#01b4dc";
+			}else if (answers[currentVraag] === "contra"){
+				btnOneens.style.backgroundColor = "#01b4dc";
+			}else{
+				btnGeen.style.backgroundColor = "#01b4dc";
+			}
+		
+		}
+		//btnEens.style.backgroundColor = "black";
+		//btnOneens.style.backgroundColor = "black";
+		//btnGeen.style.backgroundColor = "black";
 		vraagTitle.innerHTML = subjects[currentVraag].title;
 		vraagStatement.innerHTML = subjects[currentVraag].statement;
 		currentVraag++;
@@ -153,6 +167,15 @@ function showResults(){
 		}	
 	}
 	calculatePercentage();
+}
+function displayButtons(){
+	btnEens.style.backgroundColor = "black";
+	btnOneens.style.backgroundColor = "black";
+	btnGeen.style.backgroundColor = "black";
+	if(answers[currentVraag] != null){
+			document.getElementById(answers[currentVraag]).style.backgroundColor = "#01b4dc";
+		
+		}
 }
 
 startPage();
