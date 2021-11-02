@@ -82,23 +82,24 @@ function displayQuestion(){
 			}
 		
 		}
-		//btnEens.style.backgroundColor = "black";
-		//btnOneens.style.backgroundColor = "black";
-		//btnGeen.style.backgroundColor = "black";
 		vraagTitle.innerHTML = subjects[currentVraag].title;
 		vraagStatement.innerHTML = subjects[currentVraag].statement;
 		currentVraag++;
 	}
 }
 function checkMatch(){
-	for (var x = 0; x < parties.length; x++) {
-		for (var i = 0; i < subjects.length; i++) {
-			if (subjects[i].parties[x].position === answers[i]) {
-				parties[x].score++;
+	for (var i = 0; i < subjects.length; i++){
+		 	for (var x = 0; x < subjects[i].parties.length; x++){
+			var currentSubParty = subjects[i].parties[x];
+			if (currentSubParty.position === answers[i]) {
+				parties.find(checkNameMatch).score++;
 				if (isImportant[i] === 1){
 					parties[x].score++
 				} 
 			}	
+		}
+		function checkNameMatch(parties){
+			return parties.name == subjects[i].parties[x].name;
 		}
 	}
 	parties.sort(compare);
@@ -163,6 +164,7 @@ function showResults(){
 		for (var z = 0; z < 3; z++) {
 			var procentLoop = [procent1, procent2, procent3];
 			var procentScore = (parties[z].score / subjects.length * 100);
+			procentScore = Math.floor(procentScore);
 			procentLoop[z].innerHTML = (procentScore + "%");
 		}	
 	}
