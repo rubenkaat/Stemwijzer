@@ -24,10 +24,11 @@ const procent2 = document.getElementById("procent-2");
 const procent3 = document.getElementById("procent-3");
 const groteBtn = document.getElementById("grote-button");
 const secularBtn = document.getElementById("secular-button");
-
+//hier word een score variabele toegevoegd bij elke partij
 for (var y = 0; y < parties.length; y++) {
 	parties[y].score = 0;
 }
+//zet de pagina/buttons klaar
 function startPage(){
 	vragenPage.style.display="none";
 	filtersPage.style.display="none";
@@ -66,6 +67,7 @@ function startPage(){
 		displayQuestion();
 	}	
 }
+//laat de huidige vraag zien/checkt of alle vragen geweest zijn
 function displayQuestion(){
 	if (currentVraag === subjects.length) {
 		checkMatch();
@@ -87,6 +89,7 @@ function displayQuestion(){
 		currentVraag++;
 	}
 }
+//hier word score toegevoegd bij partijen met matchende antwoorden
 function checkMatch(){
 	for (var i = 0; i < subjects.length; i++){
 		 	for (var x = 0; x < subjects[i].parties.length; x++){
@@ -104,6 +107,7 @@ function checkMatch(){
 	}
 	parties.sort(compare);
 }
+//hier worden de partijen in de juiste volgorde gezet van meeste matches qua antwoorden 
 function compare(a, b) {
 	var a = a.score;
 	var b = b.score;
@@ -116,6 +120,7 @@ function compare(a, b) {
 	}
 	return comparison;
 }
+//laat de pagina zien voor de filters en maakt de filters
 function filters(){
 	vragenPage.style.display="none";
 	filtersPage.style.display="inline";
@@ -146,6 +151,7 @@ function filters(){
 		showResults();
 	}
 }
+//hier word gechecked of er meer gewicht aan een vraag moet worden gegeven
 function checkImportant(){
 	if (importantBox.checked){
 		isImportant[currentVraag-1] = 1;
@@ -153,6 +159,7 @@ function checkImportant(){
 		isImportant[currentVraag-1] = 0;
 	}
 }
+//hier worden de resultaten van de stemwijzer laten zien
 function showResults(){
 	party1.innerHTML += (parties[0].name);
 	party2.innerHTML += (parties[1].name);
@@ -170,6 +177,7 @@ function showResults(){
 	}
 	calculatePercentage();
 }
+//hier word gekeken of de vraag al is beantwoord en woord de kleur v.d. knop aangepast
 function displayButtons(){
 	btnEens.style.backgroundColor = "black";
 	btnOneens.style.backgroundColor = "black";
