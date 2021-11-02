@@ -39,7 +39,7 @@ function startPage(){
 		displayQuestion();
 	}
 	backBtn.onclick = function(){
-		if(currentVraag === 0){
+		if(currentVraag < 1){
 			vragenPage.style.display="none";
 			mainPage.style.display="inline";
 		}
