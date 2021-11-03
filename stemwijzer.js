@@ -4,16 +4,13 @@ const filtersPage = document.getElementById("filters-page");
 const startBtn = document.getElementById("btn-start");
 const backBtn = document.getElementById("backbutton");
 const vraagTitle = document.getElementById("title");
-var currentVraag = 0;
 const vraagStatement = document.getElementById("statement");
-var answers = [];
 const btnEens = document.getElementById("pro");
 const btnOneens = document.getElementById("contra");
 const btnGeen = document.getElementById("none");
 const btnSkip = document.getElementById("overslaan");
 const resultsPage = document.getElementById("results-page");
 const importantBox = document.getElementById("importantBox");
-var isImportant = [];
 const party1 = document.getElementById("party-1");
 const party2 = document.getElementById("party-2");
 const party3 = document.getElementById("party-3");
@@ -24,10 +21,15 @@ const procent2 = document.getElementById("procent-2");
 const procent3 = document.getElementById("procent-3");
 const groteBtn = document.getElementById("grote-button");
 const secularBtn = document.getElementById("secular-button");
+var currentQuestion = 0;
+var answers = [];
+var isImportant = [];
+
 //hier word een score variabele toegevoegd bij elke partij
 for (var y = 0; y < parties.length; y++) {
 	parties[y].score = 0;
 }
+
 //zet de pagina/buttons klaar
 function startPage(){
 	vragenPage.style.display="none";
@@ -39,11 +41,11 @@ function startPage(){
 		displayQuestion();
 	}
 	backBtn.onclick = function(){
-		if(currentVraag < 1){
+		if(currentQuestion < 1){
 			vragenPage.style.display="none";
 			mainPage.style.display="inline";
 		}
-		currentVraag = currentVraag-2;
+		currentQuestion = currentQuestion-2;
 		displayQuestion();
 	}
 	btnEens.onclick = function(){
@@ -67,28 +69,29 @@ function startPage(){
 		displayQuestion();
 	}	
 }
+
 //laat de huidige vraag zien/checkt of alle vragen geweest zijn
 function displayQuestion(){
-	if (currentVraag === subjects.length) {
+	if (currentQuestion === subjects.length) {
 		checkMatch();
 		filters();
 	 }else{
 	 	displayButtons();
-		if(answers[currentVraag] != null){
-			if (answers[currentVraag] === "pro") {
+		if(answers[currentQuestion] != null){
+			if (answers[currentQuestion] === "pro") {
 				btnEens.style.backgroundColor = "#01b4dc";
-			}else if (answers[currentVraag] === "contra"){
+			}else if (answers[currentQuestion] === "contra"){
 				btnOneens.style.backgroundColor = "#01b4dc";
 			}else{
 				btnGeen.style.backgroundColor = "#01b4dc";
 			}
-		
 		}
-		vraagTitle.innerHTML = subjects[currentVraag].title;
-		vraagStatement.innerHTML = subjects[currentVraag].statement;
-		currentVraag++;
+		vraagTitle.innerHTML = subjects[currentQuestion].title;
+		vraagStatement.innerHTML = subjects[currentQuestion].statement;
+		currentQuestion++;
 	}
 }
+
 //hier word score toegevoegd bij partijen met matchende antwoorden
 function checkMatch(){
 	for (var i = 0; i < subjects.length; i++){
@@ -107,6 +110,7 @@ function checkMatch(){
 	}
 	parties.sort(compare);
 }
+
 //hier worden de partijen in de juiste volgorde gezet van meeste matches qua antwoorden 
 function compare(a, b) {
 	var a = a.score;
@@ -120,6 +124,7 @@ function compare(a, b) {
 	}
 	return comparison;
 }
+
 //laat de pagina zien voor de filters en maakt de filters
 function filters(){
 	vragenPage.style.display="none";
@@ -151,14 +156,16 @@ function filters(){
 		showResults();
 	}
 }
+
 //hier word gechecked of er meer gewicht aan een vraag moet worden gegeven
 function checkImportant(){
 	if (importantBox.checked){
-		isImportant[currentVraag-1] = 1;
+		isImportant[currentQuestion-1] = 1;
 	}else{
-		isImportant[currentVraag-1] = 0;
+		isImportant[currentQuestion-1] = 0;
 	}
 }
+
 //hier worden de resultaten van de stemwijzer laten zien
 function showResults(){
 	party1.innerHTML += (parties[0].name);
@@ -177,13 +184,14 @@ function showResults(){
 	}
 	calculatePercentage();
 }
+
 //hier word gekeken of de vraag al is beantwoord en woord de kleur v.d. knop aangepast
 function displayButtons(){
 	btnEens.style.backgroundColor = "black";
 	btnOneens.style.backgroundColor = "black";
 	btnGeen.style.backgroundColor = "black";
-	if(answers[currentVraag] != null){
-			document.getElementById(answers[currentVraag]).style.backgroundColor = "#01b4dc";
+	if(answers[currentQuestion] != null){
+			document.getElementById(answers[currentQuestion]).style.backgroundColor = "#01b4dc";
 		
 		}
 }
