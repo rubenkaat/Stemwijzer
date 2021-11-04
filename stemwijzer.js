@@ -95,12 +95,13 @@ function displayQuestion(){
 //hier word score toegevoegd bij partijen met matchende antwoorden
 function checkMatch(){
 	for (var i = 0; i < subjects.length; i++){
-		 	for (var x = 0; x < subjects[i].parties.length; x++){
+		for (var x = 0; x < subjects[i].parties.length; x++){
 			var currentSubParty = subjects[i].parties[x];
 			if (currentSubParty.position === answers[i]) {
-				parties.find(checkNameMatch).score++;
+				let foundParty = parties.find(checkNameMatch);
+				foundParty.score++;
 				if (isImportant[i] === 1){
-					parties[x].score++
+					foundParty.score++;
 				} 
 			}	
 		}
